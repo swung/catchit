@@ -52,15 +52,15 @@ def main(opt):
 if __name__=='__main__':
     from optparse import OptionParser
 
-    opt = OptionParser()
-    opt.add_option('-f', '--file', dest='file', type='string', action='store',
+    parser = OptionParser()
+    parser.add_option('-f', '--file', dest='file', type='string', action='store',
                    help='log file to watch')
-    opt.add_option('-l', '--list', dest='list', type='string', action='store',
-                   helo='regex to catch')
+    parser.add_option('-l', '--list', dest='list', type='string', action='store',
+                   help='regex to catch')
     
-    (opt, args) = opt.parse_args()
+    (opt, args) = parser.parse_args()
     
-#    if opt.file and opt.list
-#        main(opt)
-#    else:   
-    opt.print_help()
+    if opt.file and opt.list:
+        main(opt)
+    else:   
+    	parser.print_help()
